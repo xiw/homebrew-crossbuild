@@ -1,5 +1,5 @@
-class X8664LinuxGnuGdb < Formula
-  desc "GNU debugger for x86_64-linux-gnu"
+class Aarch64LinuxGnuGdb < Formula
+  desc "GNU debugger for aarch64-linux-gnu"
   homepage "https://www.gnu.org/software/gdb/"
   url "http://ftpmirror.gnu.org/gdb/gdb-7.12.tar.xz"
   mirror "https://ftp.gnu.org/gnu/gdb/gdb-7.12.tar.xz"
@@ -13,7 +13,7 @@ class X8664LinuxGnuGdb < Formula
       "--disable-debug",
       "--disable-dependency-tracking",
       "--without-python",
-      "--target=x86_64-linux-gnu",
+      "--target=aarch64-linux-gnu",
     ]
 
     system "./configure", *args
