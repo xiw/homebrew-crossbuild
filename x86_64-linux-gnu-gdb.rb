@@ -1,9 +1,9 @@
 class X8664LinuxGnuGdb < Formula
   desc "GNU debugger for x86_64-linux-gnu"
   homepage "https://www.gnu.org/software/gdb/"
-  url "http://ftpmirror.gnu.org/gdb/gdb-7.12.tar.xz"
-  mirror "https://ftp.gnu.org/gnu/gdb/gdb-7.12.tar.xz"
-  sha256 "834ff3c5948b30718343ea57b11cbc3235d7995c6a4f3a5cecec8c8114164f94"
+  url "https://ftp.gnu.org/gnu/gdb/gdb-8.0.tar.xz"
+  mirror "https://ftpmirror.gnu.org/gdb/gdb-8.0.tar.xz"
+  sha256 "f6a24ffe4917e67014ef9273eb8b547cb96a13e5ca74895b06d683b391f3f4ee"
 
   depends_on "pkg-config" => :build
 
@@ -18,6 +18,10 @@ class X8664LinuxGnuGdb < Formula
 
     system "./configure", *args
     system "make"
+
+    # Don't install bfd or opcodes, as they are provided by binutils
+    inreplace ["bfd/Makefile", "opcodes/Makefile"], /^install:/, "dontinstall:"
+
     system "make", "install"
 
     # Remove conflicting items with binutils
